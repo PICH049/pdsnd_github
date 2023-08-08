@@ -54,8 +54,6 @@ def load_data(city, month, day):
     
     
     df = pd.read_csv(CITY_DATA[city], parse_dates=['Start Time'])
-    month_df = df[df['Start Time'].dt.month == 1]
-    
     df['month'] = df['Start Time'].dt.month_name()
     df['day'] = df['Start Time'].dt.day_name()
     
@@ -72,7 +70,6 @@ def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
-    start_time = time.time()
 
     #display the most common month
     df['month'] = df['Start Time'].dt.month_name()
@@ -96,8 +93,6 @@ def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
-    start_time = time.time()
-
     #display most commonly used start station
     most_common_start = df['Start Station'].mode()[0]
     print('The most commonly used start station is ', most_common_start) 
